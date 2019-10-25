@@ -1,0 +1,29 @@
+<ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[0]" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+            <h3>Den bedste fitness hjemmeside!</h3>
+            <p>Nu med log ind system, hashing af passwords og mere!</p>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[1]" alt="Random second slide">
+        </div>
+        <div class="carousel-caption">
+            <h3>Et casual flex</h3>
+            <p>Vores hjemmeside er ikke kun funktionel, men mega flot!</p>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[2]" alt="Random third slide">
+        </div>
+        <div class="carousel-caption">
+            <h3>Mere på vej!</h3>
+            <p>Tro det eller ej, men flere spændende features er på vej!</p>
+        </div>
+    </ng-template>
+</ngb-carousel>
