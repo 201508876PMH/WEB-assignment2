@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {WorkoutProgramService} from './workout-program.service';
+import {Observable} from 'rxjs';
+import {WorkoutProgram} from '../models/workoutProgram.model';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-workout-programs',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutProgramsComponent implements OnInit {
 
-  constructor() { }
+  workoutPrograms$: Observable<WorkoutProgram[]>;
+
+  constructor(private workoutProgramService: WorkoutProgramService) {
+    this.workoutPrograms$ = this.workoutProgramService.getWorkoutPrograms();
+  }
 
   ngOnInit() {
   }

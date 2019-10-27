@@ -10,7 +10,11 @@ import { LoginComponent } from './login/login.component';
 import { WorkoutProgramsComponent } from './workout-programs/workout-programs.component';
 import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCarousel, NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthGuard} from './guards/authGuard';
+import {MatListModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbCarouselModule,
+    NgbModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

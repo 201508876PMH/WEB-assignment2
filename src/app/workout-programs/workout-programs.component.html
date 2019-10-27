@@ -1,16 +1,7 @@
-<div class="mainContent">
-    <h1><%= title %></h1>
-    <p></p>
-    <a href='/workoutprograms/createworkoutprogram' class="btn btn-primary" role="button"><i class="fa fa-plus"></i>
-        Create workout program</a>
-    <p></p>
-    <ul>
-        
-        <li>
-            <a href='/workoutprograms/<%= workoutlist[i]._id %>'>
-               
-            </a>
-        </li>
-        
-    </ul>
-</div>
+<mat-list>
+  <h3 mat-subheader>Workout programs</h3>
+  <mat-list-item *ngFor="let workoutProgram of workoutPrograms$ | async">
+    <h4 mat-line>{{workoutProgram.name}} </h4>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
