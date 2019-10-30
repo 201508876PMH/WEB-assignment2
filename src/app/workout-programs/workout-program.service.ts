@@ -12,7 +12,7 @@ export class WorkoutProgramService {
   workoutPrograms: WorkoutProgram[];
 
   constructor(private httpClient: HttpClient) {
-    this.getWorkoutPrograms();
+    //this.getWorkoutPrograms();
   }
 
   public getWorkoutPrograms(): Observable<WorkoutProgram[]> {

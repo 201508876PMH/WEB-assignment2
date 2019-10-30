@@ -16,6 +16,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from './guards/authGuard';
 import {MatListModule, MatSnackBarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateWorkoutProgramComponent } from './create-workout-program/create-workout-program.component';
+import { ViewWorkoutProgramComponent } from './view-workout-program/view-workout-program.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     WorkoutProgramsComponent,
     HomeComponent,
-    CarouselComponent
+    CarouselComponent,
+    CreateWorkoutProgramComponent,
+    ViewWorkoutProgramComponent
   ],
   imports: [
     BrowserModule,

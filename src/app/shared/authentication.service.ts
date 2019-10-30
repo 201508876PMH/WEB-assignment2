@@ -11,6 +11,7 @@ import {MatSnackBar} from '@angular/material';
 export class AuthenticationService {
   baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/users';
   redirectUrl: string;
+  
 
   constructor(private httpClient: HttpClient,
               private router: Router, private _snackBar: MatSnackBar) {
@@ -76,6 +77,10 @@ export class AuthenticationService {
       }
     });
 
+  }
+
+  public getWorkoutProgram(id: String){
+    
   }
 
   

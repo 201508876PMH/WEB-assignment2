@@ -1,7 +1,29 @@
-<mat-list>
+<!-- <mat-list>
+    <button type="submit" class="btn btn-primary">Create new workout program</button>
   <h1 mat-subheader>Workout programs</h1>
   <mat-list-item *ngFor="let workoutProgram of workoutPrograms$ | async">
     <h4 mat-line>{{workoutProgram.name}} </h4>
     <mat-divider></mat-divider>
   </mat-list-item>
-</mat-list>
+</mat-list> -->
+<div class="mainContent">
+    <h1>Workout programs</h1>
+    <p></p>
+    <a routerLink="/createWorkoutProgram" routerLinkActive="active" class="btn btn-primary" role="button"><i class="fa fa-plus"></i>
+        Create workout program</a>
+    <p></p>
+    <ul>
+        <mat-list-item *ngFor="let workoutProgram of workoutPrograms$ | async">
+            <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+
+        <!-- <% for(var i=0; i<workoutlist.length; i++) { %>
+        <li>
+            <a href='/workoutprograms/<%= workoutlist[i]._id %>'>
+                <%= workoutlist[i].name %>
+            </a>
+        </li>
+        <% } %> -->
+    </ul>
+</div>
