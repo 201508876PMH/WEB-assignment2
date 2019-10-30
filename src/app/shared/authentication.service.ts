@@ -79,11 +79,7 @@ export class AuthenticationService {
 
   }
 
-  public getWorkoutProgram(id: String){
-    
-  }
-
-  
+   
 
   public register(user: User) {
     const url = `${this.baseUrl}/createUser`;

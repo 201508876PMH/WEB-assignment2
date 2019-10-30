@@ -3,7 +3,7 @@ import {WorkoutProgram} from '../models/workoutProgram.model';
 import {Observable} from 'rxjs';
 import {ViewWorkoutProgramService} from './view-workout-program.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import {switchMap} from 'rxjs/Operators';
+import {switchMap, take} from 'rxjs/Operators';
 
 
 @Component({
@@ -19,9 +19,12 @@ export class ViewWorkoutProgramComponent implements OnInit {
     //this.workoutProgram$ = this.route.paramMap.pipe(switchMap((params: ParamMap) =>
     //this.viewWorkoutProgramService.getWorkoutProgram(params.get('id'))));
 
-    this.workoutProgram$ = this.viewWorkoutProgramService.getWorkoutProgram(this.route.snapshot.params['id']);
     
 
+    //console.log("1: " + this.workoutProgram$.pipe.name);
+    this.workoutProgram$ = this.viewWorkoutProgramService.getWorkoutProgram(this.route.snapshot.params['id']);
+    
+    //console.log("2: " + this.workoutProgram$.pipe(take(1)));
 
     //this.workoutProgram$ = this.viewWorkoutProgramService.getWorkoutProgram('id');
   }
