@@ -8,14 +8,13 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/createAccount" routerLinkActive="active">Create account</a>
+        </li>    
+        <li class="nav-item">
+          <a  *ngIf="authService.isLoggedIn()" (click)="authService.logout()" class="nav-link" routerLink="/" routerLinkActive="active">Logout</a>
         </li>
 
         <li class="nav-item">
-          <a (click)="authService.logout()" class="nav-link" routerLink="/" routerLinkActive="active">Logout</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Log in</a>
+          <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="/login" routerLinkActive="active">Log in</a>
         </li>
 
         <li class="nav-item">

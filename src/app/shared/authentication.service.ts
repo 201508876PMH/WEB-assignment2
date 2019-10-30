@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {User} from '../models/user.model';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,13 @@ export class AuthenticationService {
   redirectUrl: string;
 
   constructor(private httpClient: HttpClient,
-              private router: Router) {
+              private router: Router, private _snackBar: MatSnackBar) {
+  }
+
+  public openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+    });
   }
 
   public getCurrentUser() {
@@ -58,6 +66,9 @@ export class AuthenticationService {
       }
       return true;
     }, (err: HttpErrorResponse) => {
+
+      this.openSnackBar("Login failed, invalid username or password", "OK");
+
       if (err.error instanceof Error) {
         console.log('an error occured:', err.error.message);
       } else {
@@ -67,15 +78,21 @@ export class AuthenticationService {
 
   }
 
+  
+
   public register(user: User) {
     const url = `${this.baseUrl}/createUser`;
     this.httpClient.post(url, user).subscribe(data => {
         // this.saveToken(data.token);
+
+        this.router.navigate(['/']);
+
         return true;
       }, (err: HttpErrorResponse) => {
+
         if (err.error instanceof Error) {
           console.log('an error occured:', err.error.message);
-        } else {
+        } else {          
           console.log(`backend return code ${err.status}, body was: ${err.error}`);
         }
       }

@@ -14,7 +14,8 @@ import {NgbCarousel, NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootst
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from './guards/authGuard';
-import {MatListModule} from '@angular/material';
+import {MatListModule, MatSnackBarModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {MatListModule} from '@angular/material';
     LoginComponent,
     WorkoutProgramsComponent,
     HomeComponent,
-    CarouselComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,9 @@ import {MatListModule} from '@angular/material';
     ReactiveFormsModule,
     NgbCarouselModule,
     NgbModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
