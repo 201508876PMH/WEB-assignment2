@@ -11,13 +11,14 @@ import { WorkoutProgramsComponent } from './workout-programs/workout-programs.co
 import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import {NgbCarousel, NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from './guards/authGuard';
 import {MatListModule, MatSnackBarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateWorkoutProgramComponent } from './create-workout-program/create-workout-program.component';
 import { ViewWorkoutProgramComponent } from './view-workout-program/view-workout-program.component';
+import { AuthInterceptor } from './shared/auth.intercepter';
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { ViewWorkoutProgramComponent } from './view-workout-program/view-workout
     MatSnackBarModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,6 @@ import {Observable} from 'rxjs';
 export class ViewWorkoutProgramService {
 
   workoutProgramUrl = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/getWorkoutProgram/';
-  workoutProgram: WorkoutProgram;
 
   constructor(private httpClient: HttpClient) {
     //this.getWorkoutProgram();
@@ -17,6 +16,7 @@ export class ViewWorkoutProgramService {
 
   public getWorkoutProgram(id: String): Observable<WorkoutProgram> {
 
+    
     return this.httpClient.get<WorkoutProgram>(this.workoutProgramUrl + id);
   }
 }

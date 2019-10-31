@@ -1,5 +1,5 @@
 export class WorkoutProgram {
-  id: string;
+  _id: string;
   name: string;
 
 }

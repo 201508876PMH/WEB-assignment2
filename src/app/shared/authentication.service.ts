@@ -108,7 +108,7 @@ export class AuthenticationService {
     window.localStorage.removeItem('loc8r-token');
   }
 
-  private getToken() {
+  public getToken() {
     if (window.localStorage['loc8r-token']) {
       return window.localStorage['loc8r-token'];
     } else {

@@ -1,7 +1,6 @@
-<p>view-workout-program works!</p>
 <div class="mainContent">
-        <h1>{{workoutProgram$.name}}</h1>
-        <div *ngIf="workoutProgram$ | async" layout="row" layout-align="center"></div>
+        <div>Workout program name: {{(workoutProgram$ | async)?.name}}</div>
+
         <p></p>
         <a href='/workoutprograms/<%= workoutprogramid %>/addexercise' class="btn btn-primary" role="button"><i
                 class="fa fa-plus"></i>

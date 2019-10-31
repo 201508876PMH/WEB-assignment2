@@ -13,6 +13,7 @@ import {switchMap, take} from 'rxjs/Operators';
 })
 export class ViewWorkoutProgramComponent implements OnInit {
 
+  workoutProgram: WorkoutProgram;
   workoutProgram$: Observable<WorkoutProgram>;
 
   constructor(private viewWorkoutProgramService: ViewWorkoutProgramService, private route: ActivatedRoute, private router: Router) {
@@ -23,6 +24,15 @@ export class ViewWorkoutProgramComponent implements OnInit {
 
     //console.log("1: " + this.workoutProgram$.pipe.name);
     this.workoutProgram$ = this.viewWorkoutProgramService.getWorkoutProgram(this.route.snapshot.params['id']);
+
+    //  this.viewWorkoutProgramService.getWorkoutProgram(this.route.snapshot.params['id'])
+    // .subscribe((program) => {
+    //     this.workoutProgram = program;
+    // });
+    /*var workoutPrograms = this.viewWorkoutProgramService.getWorkoutProgram(this.route.snapshot.params['id']).subscribe(
+      data => console.log(data)
+    );*/
+    
     
     //console.log("2: " + this.workoutProgram$.pipe(take(1)));
 
