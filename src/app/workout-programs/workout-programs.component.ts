@@ -3,6 +3,9 @@ import {Observable} from 'rxjs';
 import {WorkoutProgram} from '../models/workoutProgram.model';
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {WorkLog} from '../models/workLog.model';
+import {ViewWorkoutProgramService} from '../view-workout-program/view-workout-program.service';
+import {AuthenticationService} from '../shared/authentication.service';
 
 export interface DialogData {
   workoutProgramId: string;
@@ -52,13 +55,18 @@ export class WorkLogDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<WorkLogDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private workoutProgramService: WorkoutProgramService,
+    private AuthService: AuthenticationService) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
+
   onAddClick(workoutProgramId: string): void {
-    console.log(this.date);
+    const workLog = new WorkLog(this.date, workoutProgramId);
+    this.workoutProgramService.addWorkLog(workLog);
     this.dialogRef.close();
   }
 

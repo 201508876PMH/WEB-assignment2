@@ -11,23 +11,25 @@ import {MatSnackBar} from '@angular/material';
 export class AuthenticationService {
   baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/users';
   redirectUrl: string;
-  
+
 
   constructor(private httpClient: HttpClient,
               private router: Router) {
   }
 
-  public getCurrentUser() {
+  public getCurrentUser(): User {
     if (this.isLoggedIn()) {
       const token = this.getToken();
       const payload = JSON.parse(window.atob(token.split('.')[1]));
       const user = new User();
+      user.id = payload._id;
       user.emailAddress = payload.emailAddress;
       user.firstName = payload.firstName;
       user.lastName = payload.lastName;
+
       return user;
     } else {
-      return '';
+      return null;
     }
   }
 
@@ -46,13 +48,12 @@ export class AuthenticationService {
     this.removeToken();
   }
 
-  public login(user: User){
+  public login(user: User) {
     console.log('logging in this user:', user);
     const url = `${this.baseUrl}/login`;
     var r = this.httpClient.post(url, user).subscribe(data => {
       this.saveToken(data['token']);
       console.log(this.redirectUrl);
-
       if (this.redirectUrl) {
         console.log(this.redirectUrl);
         this.router.navigate([this.redirectUrl]);
@@ -75,7 +76,6 @@ export class AuthenticationService {
     return r;
   }
 
-   
 
   public register(user: User) {
     const url = `${this.baseUrl}/createUser`;
@@ -89,7 +89,7 @@ export class AuthenticationService {
 
         if (err.error instanceof Error) {
           console.log('an error occured:', err.error.message);
-        } else {          
+        } else {
           console.log(`backend return code ${err.status}, body was: ${err.error}`);
         }
       }
