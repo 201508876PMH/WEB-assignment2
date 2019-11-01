@@ -19,4 +19,9 @@ export class WorkoutProgramService {
 
     return this.httpClient.get<WorkoutProgram[]>(this.workoutProgramsUrl + 'getWorkoutPrograms');
   }
+
+  //public addWorkLog(): Observable<WorkoutProgram[]> {
+//
+  //  return this.httpClient.get<WorkoutProgram[]>(this.workoutProgramsUrl + 'getWorkoutPrograms');
+  //}
 }

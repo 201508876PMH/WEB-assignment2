@@ -7,18 +7,28 @@ import {CreateAccountComponent} from './create-account/create-account.component'
 import {HeaderComponent} from './header/header.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {LoginComponent} from './login/login.component';
-import {WorkoutProgramsComponent} from './workout-programs/workout-programs.component';
+import {WorkLogDialogComponent, WorkoutProgramsComponent} from './workout-programs/workout-programs.component';
 import {HomeComponent} from './home/home.component';
 import {CarouselComponent} from './home/carousel/carousel.component';
 import {NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthGuard} from './guards/authGuard';
-import {MatButtonModule, MatListModule, MatSnackBarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatListModule,
+  MatSnackBarModule,
+  MatNativeDateModule,
+  MatInputModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CreateWorkoutProgramComponent} from './create-workout-program/create-workout-program.component';
 import {ViewWorkoutProgramComponent} from './view-workout-program/view-workout-program.component';
 import {AuthInterceptor} from './shared/auth.intercepter';
+
 
 
 @NgModule({
@@ -32,7 +42,8 @@ import {AuthInterceptor} from './shared/auth.intercepter';
     HomeComponent,
     CarouselComponent,
     CreateWorkoutProgramComponent,
-    ViewWorkoutProgramComponent
+    ViewWorkoutProgramComponent,
+    WorkLogDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +56,15 @@ import {AuthInterceptor} from './shared/auth.intercepter';
     MatListModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  entryComponents: [WorkLogDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
