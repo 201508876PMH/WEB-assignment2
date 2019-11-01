@@ -7,23 +7,27 @@
   </mat-list-item>
 </mat-list> -->
 <div class="mainContent">
-    <h1>Workout programs</h1>
-    <p></p>
-    <a routerLink="/createWorkoutProgram" routerLinkActive="active" class="btn btn-primary" role="button"><i class="fa fa-plus"></i>
-        Create workout program</a>
-    <p></p>
-    <ul>
-        <mat-list-item *ngFor="let workoutProgram of workoutPrograms$ | async">
-            <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
-            <mat-divider></mat-divider>
-          </mat-list-item>
+  <h1>Workout programs</h1>
+  <p></p>
+  <a routerLink="/createWorkoutProgram" routerLinkActive="active" class="btn btn-primary" role="button"><i
+    class="fa fa-plus"></i>
+    Create workout program</a>
+  <p></p>
+  <ul>
+    <mat-list-item *ngFor="let workoutProgram of workoutPrograms$ | async">
+      <div class="wrapper">
+        <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
+        <button mat-button (click)="addWorkLog($event, workoutProgram._id)">I did this</button>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
 
-        <!-- <% for(var i=0; i<workoutlist.length; i++) { %>
+    <!-- <% for(var i=0; i<workoutlist.length; i++) { %>
         <li>
             <a href='/workoutprograms/<%= workoutlist[i]._id %>'>
                 <%= workoutlist[i].name %>
             </a>
         </li>
         <% } %> -->
-    </ul>
+  </ul>
 </div>

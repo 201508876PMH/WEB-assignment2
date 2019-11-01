@@ -19,4 +19,7 @@ export class WorkoutProgramsComponent implements OnInit {
   ngOnInit() {
   }
 
+  addWorkLog(event: Event, workoutProgram: string) {
+    console.log(WorkoutProgram);
+  }
 }

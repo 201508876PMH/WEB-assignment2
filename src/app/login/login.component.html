@@ -1,6 +1,6 @@
 <div class="mainContent">
     <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="authService.login(loginForm.value)">
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
       <div class="form-group">
         <label for="emailAddress">Email address</label>
         <input formControlName="emailAddress" id="emailAddress" type="text" class="form-control" placeholder="Email address..."/>

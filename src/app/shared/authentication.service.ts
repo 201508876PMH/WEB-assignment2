@@ -14,13 +14,7 @@ export class AuthenticationService {
   
 
   constructor(private httpClient: HttpClient,
-              private router: Router, private _snackBar: MatSnackBar) {
-  }
-
-  public openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 5000,
-    });
+              private router: Router) {
   }
 
   public getCurrentUser() {
@@ -52,10 +46,10 @@ export class AuthenticationService {
     this.removeToken();
   }
 
-  public login(user: User) {
+  public login(user: User){
     console.log('logging in this user:', user);
     const url = `${this.baseUrl}/login`;
-    this.httpClient.post(url, user).subscribe(data => {
+    var r = this.httpClient.post(url, user).subscribe(data => {
       this.saveToken(data['token']);
       console.log(this.redirectUrl);
 
@@ -68,15 +62,17 @@ export class AuthenticationService {
       return true;
     }, (err: HttpErrorResponse) => {
 
-      this.openSnackBar("Login failed, invalid username or password", "OK");
+      //this.openSnackBar("Login failed, invalid username or password", "OK");
 
       if (err.error instanceof Error) {
         console.log('an error occured:', err.error.message);
       } else {
         console.log(`backend return code ${err.status}, body was: ${err.error}`);
       }
-    });
 
+      //return false;
+    });
+    return r;
   }
 
    
