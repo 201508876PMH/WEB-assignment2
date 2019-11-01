@@ -48,6 +48,7 @@ export class WorkoutProgramsComponent implements OnInit {
 
 // tslint:disable-next-line:component-class-suffix
 export class WorkLogDialogComponent {
+  date: Date;
 
   constructor(
     public dialogRef: MatDialogRef<WorkLogDialogComponent>,
@@ -57,7 +58,7 @@ export class WorkLogDialogComponent {
     this.dialogRef.close();
   }
   onAddClick(workoutProgramId: string): void {
-
+    console.log(this.date);
     this.dialogRef.close();
   }
 
