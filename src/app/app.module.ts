@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CreateWorkoutProgramComponent} from './create-workout-program/create-workout-program.component';
 import {ViewWorkoutProgramComponent} from './view-workout-program/view-workout-program.component';
 import {AuthInterceptor} from './shared/auth.intercepter';
+import {WorkoutProgramsResolverService} from './workout-programs/workout-programs-resolver.service';
 
 
 
@@ -63,7 +64,7 @@ import {AuthInterceptor} from './shared/auth.intercepter';
     MatNativeDateModule,
     MatInputModule
   ],
-  providers: [AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [AuthGuard, WorkoutProgramsResolverService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   entryComponents: [WorkLogDialogComponent],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,8 @@
   </mat-list-item>
 </mat-list> -->
 <div class="mainContent">
+
+
   <h1>Workout programs</h1>
   <p></p>
   <a routerLink="/createWorkoutProgram" routerLinkActive="active" class="btn btn-primary" role="button"><i
@@ -14,14 +16,13 @@
     Create workout program</a>
   <p></p>
   <ul>
-    <mat-list-item *ngFor="let workoutProgram of workoutPrograms$ | async">
-      <div class="wrapper">
-        <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
-        <button mat-button (click)="openDialog(workoutProgram._id)">I did this</button>
-      </div>
+    <mat-list-item *ngFor="let workoutProgram of filteredWorkOutPrograms$ | async; let i = index">
+        <div class="wrapper" [ngClass]="{'grey ' : isEven(i)}" >
+          <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
+          <button  mat-raised-button (click)="openDialog(workoutProgram._id)">I did this</button>
+        </div>
       <mat-divider></mat-divider>
     </mat-list-item>
-
     <!-- <% for(var i=0; i<workoutlist.length; i++) { %>
         <li>
             <a href='/workoutprograms/<%= workoutlist[i]._id %>'>
@@ -30,4 +31,8 @@
         </li>
         <% } %> -->
   </ul>
+  <mat-form-field appearance="outline">
+    <mat-label>Filter workouts by name...</mat-label>
+    <input matInput class="input-group" type="text" [formControl]="filter">
+  </mat-form-field>
 </div>

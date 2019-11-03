@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>Hi {{data.workoutProgramId}}</h1>
+<h1 mat-dialog-title>Hi {{AuthService.getCurrentUser().firstName}}, fill in the following items:</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
+    <input matInput [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker  #picker></mat-datepicker>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

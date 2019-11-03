@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   private emailAddress: FormControl;
   private password: FormControl;
 
-  constructor(private authService: AuthenticationService, private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(private authService: AuthenticationService, private formBuilder: FormBuilder) {
     this.emailAddress = new FormControl();
     this.password = new FormControl();
     this.loginForm = new FormGroup({
@@ -23,16 +23,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 5000,
-    });
-  }
 
-  public login(loginF){
-    //console.log(loginF)
-    var gikGodt = this.authService.login(loginF)
-    console.log("Gikgodt: ", gikGodt)
+
+  public login(loginForm){
+
+    this.authService.login(loginForm);
   }
 
   ngOnInit() {
