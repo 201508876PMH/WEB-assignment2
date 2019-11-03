@@ -1,27 +1,30 @@
-.wrapper{
+.wrapper {
   display: flex;
   justify-content: space-between;
   padding-top: 8px;
   padding-bottom: 8px;
   align-items: center;
 }
-.grey{
-  background-color: white;
-}
 
-ul{
+
+
+ul {
   padding-inline-start: 0px;
 }
 
-.mat-raised-button:hover{
+.mat-divider {
+  border-top-width: 2px;
+}
+
+.mat-raised-button:hover {
   background-color: #007bff;
   color: #ffffff;
 }
 
-mat-form-field{
+mat-form-field {
   width: 100%;
 }
 
-.mat-line{
-color:black;
+.mat-line {
+  color: black;
 }

@@ -11,16 +11,23 @@
 
   <h1>Workout programs</h1>
   <p></p>
-  <a routerLink="/createWorkoutProgram" routerLinkActive="active" class="btn btn-primary" role="button"><i
-    class="fa fa-plus"></i>
-    Create workout program</a>
+  <div class="hola">
+    <a routerLink="/createWorkoutProgram" routerLinkActive="active" class="btn btn-primary" role="button"><i
+      class="fa fa-plus"></i>
+      Create workout program</a>
+    <mat-form-field appearance="outline">
+      <mat-label>Filter workouts by name...</mat-label>
+      <input matInput class="input-group" type="text" [formControl]="filter">
+    </mat-form-field>
+  </div>
+
   <p></p>
   <ul>
     <mat-list-item *ngFor="let workoutProgram of filteredWorkOutPrograms$ | async; let i = index">
-        <div class="wrapper" [ngClass]="{'grey ' : isEven(i)}" >
-          <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
-          <button  mat-raised-button (click)="openDialog(workoutProgram._id)">I did this</button>
-        </div>
+      <div class="wrapper" [ngClass]="{'grey ' : isEven(i)}">
+        <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
+        <button mat-raised-button (click)="openDialog(workoutProgram._id)">I did this</button>
+      </div>
       <mat-divider></mat-divider>
     </mat-list-item>
     <!-- <% for(var i=0; i<workoutlist.length; i++) { %>
@@ -31,8 +38,5 @@
         </li>
         <% } %> -->
   </ul>
-  <mat-form-field appearance="outline">
-    <mat-label>Filter workouts by name...</mat-label>
-    <input matInput class="input-group" type="text" [formControl]="filter">
-  </mat-form-field>
+
 </div>

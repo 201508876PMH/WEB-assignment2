@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {WorkLog} from '../models/workLog.model';
+import {publishReplay, refCount} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,18 @@ export class WorkoutProgramService {
 
   baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/';
   workoutProgramsUrl = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/';
+  addWorkoutUrl = 'createWorkoutProgram'
   addWorkLogUrl = this.baseUrl + 'users/addWorkLog';
 
   workoutPrograms: WorkoutProgram[];
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  createWorkout(name: String): void {
+    this.httpClient.post(this.workoutProgramsUrl + 'createWorkoutProgram', name).subscribe((data) => {
+      console.log("DATA ",data);
+    });
   }
 
   public getWorkoutPrograms(): Observable<WorkoutProgram[]> {
