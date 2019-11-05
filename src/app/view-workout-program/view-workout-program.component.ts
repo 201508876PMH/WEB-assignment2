@@ -13,7 +13,7 @@ import {switchMap, take} from 'rxjs/Operators';
 })
 export class ViewWorkoutProgramComponent implements OnInit {
 
-  workoutProgram: WorkoutProgram;
+  //workoutProgram: WorkoutProgram;
   workoutProgram$: Observable<WorkoutProgram>;
 
   constructor(private viewWorkoutProgramService: ViewWorkoutProgramService, private route: ActivatedRoute, private router: Router) {

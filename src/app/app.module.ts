@@ -29,6 +29,7 @@ import {CreateWorkoutProgramComponent} from './create-workout-program/create-wor
 import {ViewWorkoutProgramComponent} from './view-workout-program/view-workout-program.component';
 import {AuthInterceptor} from './shared/auth.intercepter';
 import {WorkoutProgramsResolverService} from './workout-programs/workout-programs-resolver.service';
+import { AddExerciseComponent } from './add-exercise/add-exercise.component';
 
 
 
@@ -44,7 +45,8 @@ import {WorkoutProgramsResolverService} from './workout-programs/workout-program
     CarouselComponent,
     CreateWorkoutProgramComponent,
     ViewWorkoutProgramComponent,
-    WorkLogDialogComponent
+    WorkLogDialogComponent,
+    AddExerciseComponent
   ],
   imports: [
     BrowserModule,
