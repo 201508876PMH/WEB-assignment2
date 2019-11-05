@@ -1,28 +1,29 @@
 <div class="mainContent">
-        <div>Workout program name: {{(workoutProgram$ | async)?.name}}</div>
+    <div>Workout program name: {{(workoutProgram$ | async)?.name}}</div>
 
-        <p></p>
-        <a routerLink="/addExercise/{{(workoutProgram$ | async)?._id}}" routerLinkActive="active" class="btn btn-primary" role="button"><i
-                class="fa fa-plus"></i>
-            Add exercise</a>
-        <p></p>
-        <table class="table table-striped">
-            <thead>
+    <p></p>
+    <a routerLink="/addExercise/{{(workoutProgram$ | async)?._id}}" routerLinkActive="active" class="btn btn-primary"
+        role="button"><i class="fa fa-plus"></i>
+        Add exercise</a>
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Exercise</th>
+                <th scope="col">Description</th>
+                <th scope="col">Set</th>
+                <th scope="col">Reps/time</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let exercise of (exercises$ | async)">
                 <tr>
-                    <th scope="col">Exercise</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Set</th>
-                    <th scope="col">Reps/time</th>
+                    <td>{{exercise.exercise}}</td>
+                    <td>{{exercise.description}}</td>
+                    <td>{{exercise.set}}</td>
+                    <td>{{exercise.reps_time}}</td>
                 </tr>
-            </thead>
-            <tbody>
-               <!--  <% for(var i=0; i<workoutprogram.exercises.length; i++) { %>
-                <tr>
-                    <td><%= workoutprogram.exercises[i].exercise %></td>
-                    <td><%= workoutprogram.exercises[i].description %></td>
-                    <td><%= workoutprogram.exercises[i].set %></td>
-                    <td><%= workoutprogram.exercises[i].reps_time %></td>
-                </tr>
-                <% } %> -->
-            </tbody>
-        </table>
+
+
+            
+        </tbody>
+    </table>

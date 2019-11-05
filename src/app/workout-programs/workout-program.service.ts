@@ -1,5 +1,6 @@
 import {WorkoutProgram} from '../models/workoutProgram.model';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpErrorResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {WorkLog} from '../models/workLog.model';
@@ -17,13 +18,25 @@ export class WorkoutProgramService {
 
   workoutPrograms: WorkoutProgram[];
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
   }
 
   createWorkout(name: String): void {
+
     this.httpClient.post(this.workoutProgramsUrl + 'createWorkoutProgram', name).subscribe((data) => {
-      console.log("DATA ",data);
-    });
+
+    this.router.navigate(['/workoutPrograms']);
+
+    return true;
+  }, (err: HttpErrorResponse) => {
+
+    if (err.error instanceof Error) {
+      console.log('An error occured while creating workout program:', err.error.message);
+    } else {
+      console.log(`Backend return code ${err.status}, body was: ${err.error}`);
+    }
+  }
+);
   }
 
   public getWorkoutPrograms(): Observable<WorkoutProgram[]> {
