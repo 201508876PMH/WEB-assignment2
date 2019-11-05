@@ -6,6 +6,12 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 import {WorkLog} from '../models/workLog.model';
 import {ViewWorkoutProgramService} from '../view-workout-program/view-workout-program.service';
 import {AuthenticationService} from '../shared/authentication.service';
+import {ActivatedRoute} from '@angular/router';
+import {FormControl} from '@angular/forms';
+import {of} from 'rxjs/internal/observable/of';
+import {startWith} from 'rxjs/internal/operators/startWith';
+import {map} from 'rxjs/operators';
+import {combineLatest} from 'rxjs/internal/observable/combineLatest';
 
 export interface DialogData {
   workoutProgramId: string;
@@ -18,15 +24,35 @@ export interface DialogData {
 })
 export class WorkoutProgramsComponent implements OnInit {
 
+  workoutPrograms: WorkoutProgram[];
   workoutPrograms$: Observable<WorkoutProgram[]>;
+  filter: FormControl;
+  filter$: Observable<string>;
+  filteredWorkOutPrograms$: Observable<WorkoutProgram[]>
 
-  constructor(private workoutProgramService: WorkoutProgramService, public dialog: MatDialog) {
-    this.workoutPrograms$ = this.workoutProgramService.getWorkoutPrograms();
+  constructor(private workoutProgramService: WorkoutProgramService,
+              public dialog: MatDialog,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.workoutPrograms$ = this.workoutProgramService.getWorkoutPrograms();
+    this.filter = new FormControl();
+    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
+    if (this.filter$) {
+      this.filteredWorkOutPrograms$ = combineLatest(this.workoutPrograms$, this.filter$).pipe(
+        map(([students, filterString]) => students.filter(student =>
+          student.name.indexOf(filterString) !== -1))
+      );
+    }
+
+    // MED RESOLVER
+    this.workoutPrograms = this.route.snapshot.data['workoutProgramList'];
   }
 
+  isEven(n) {
+    return n % 2 == 0;
+  }
 
   openDialog(workoutProgramId: string): void {
     const dialogRef = this.dialog.open(WorkLogDialogComponent, {
@@ -37,10 +63,6 @@ export class WorkoutProgramsComponent implements OnInit {
     });
   }
 
-  addWorkLog(workoutProgram: string) {
-    console.log(workoutProgram);
-
-  }
 }
 
 @Component({
@@ -52,12 +74,14 @@ export class WorkoutProgramsComponent implements OnInit {
 // tslint:disable-next-line:component-class-suffix
 export class WorkLogDialogComponent {
   date: Date;
-
+  maxDate: Date;
   constructor(
     public dialogRef: MatDialogRef<WorkLogDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private workoutProgramService: WorkoutProgramService,
     private AuthService: AuthenticationService) {
+    this.maxDate = new Date();
+
   }
 
   onNoClick(): void {

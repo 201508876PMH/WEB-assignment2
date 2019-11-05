@@ -1,7 +1,30 @@
-.wrapper{
+.wrapper {
   display: flex;
   justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  align-items: center;
 }
-.mat-list .mat-list-item.right .mat-list-item-content{
-  justify-content: flex-end;
+
+
+
+ul {
+  padding-inline-start: 0px;
+}
+
+.mat-divider {
+  border-top-width: 2px;
+}
+
+.mat-raised-button:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-line {
+  color: black;
 }

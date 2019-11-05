@@ -8,6 +8,7 @@ import {WorkoutProgramsComponent} from './workout-programs/workout-programs.comp
 import {CreateWorkoutProgramComponent} from './create-workout-program/create-workout-program.component';
 import {ViewWorkoutProgramComponent} from './view-workout-program/view-workout-program.component';
 import {AuthGuard} from './guards/authGuard';
+import {WorkoutProgramsResolverService} from './workout-programs/workout-programs-resolver.service';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   //{path: 'workoutPrograms', component: WorkoutProgramsComponent, canActivate: [AuthGuard]},
-  {path: 'workoutPrograms', component: WorkoutProgramsComponent},
+  {path: 'workoutPrograms', component: WorkoutProgramsComponent, resolve: {workoutProgramList: WorkoutProgramsResolverService}},
   {path: 'createWorkoutProgram', component:CreateWorkoutProgramComponent,  canActivate: [AuthGuard]},
   {path: 'viewWorkoutProgram/:id', component:ViewWorkoutProgramComponent,  canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent}

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from '../models/user.model';
-import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 
@@ -14,7 +14,8 @@ export class AuthenticationService {
 
 
   constructor(private httpClient: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private _snackBar: MatSnackBar) {
   }
 
   public getCurrentUser(): User {
@@ -48,10 +49,15 @@ export class AuthenticationService {
     this.removeToken();
   }
 
+  public openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+    });
+  }
+
   public login(user: User) {
-    console.log('logging in this user:', user);
     const url = `${this.baseUrl}/login`;
-    var r = this.httpClient.post(url, user).subscribe(data => {
+    this.httpClient.post(url, user).subscribe(data => {
       this.saveToken(data['token']);
       console.log(this.redirectUrl);
       if (this.redirectUrl) {
@@ -63,17 +69,14 @@ export class AuthenticationService {
       return true;
     }, (err: HttpErrorResponse) => {
 
-      //this.openSnackBar("Login failed, invalid username or password", "OK");
-
+      this.openSnackBar("Login failed, invalid username or password", "OK");
       if (err.error instanceof Error) {
         console.log('an error occured:', err.error.message);
       } else {
         console.log(`backend return code ${err.status}, body was: ${err.error}`);
       }
-
-      //return false;
+      return false;
     });
-    return r;
   }
 
 
@@ -97,16 +100,16 @@ export class AuthenticationService {
   }
 
   private saveToken(token: string) {
-    window.localStorage['loc8r-token'] = token;
+    window.localStorage['jwt-token'] = token;
   }
 
   private removeToken() {
-    window.localStorage.removeItem('loc8r-token');
+    window.localStorage.removeItem('jwt-token');
   }
 
   public getToken() {
-    if (window.localStorage['loc8r-token']) {
-      return window.localStorage['loc8r-token'];
+    if (window.localStorage['jwt-token']) {
+      return window.localStorage['jwt-token'];
     } else {
       return '';
     }
