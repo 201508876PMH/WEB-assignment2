@@ -2,7 +2,7 @@
         <div>Workout program name: {{(workoutProgram$ | async)?.name}}</div>
 
         <p></p>
-        <a href='/workoutprograms/<%= workoutprogramid %>/addexercise' class="btn btn-primary" role="button"><i
+        <a routerLink="/addExercise/{{(workoutProgram$ | async)?._id}}" routerLinkActive="active" class="btn btn-primary" role="button"><i
                 class="fa fa-plus"></i>
             Add exercise</a>
         <p></p>

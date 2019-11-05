@@ -4,7 +4,7 @@
 <mat-list>
   <mat-list-item *ngFor="let worklog of worklogs">
     <div>{{worklog.date | date}}</div>
-    <div> {{(workoutProgram$ | async)?.name}}</div>
+    <div> {{getNameForWorkout(worklog)}}</div>
   </mat-list-item>
 </mat-list>
 

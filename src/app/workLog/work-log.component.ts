@@ -15,7 +15,7 @@ export class WorkLogComponent implements OnInit {
   workLogs$: Observable<WorkLog[]>;
   worklogs: WorkLog[];
   workoutProgram$: Observable<WorkoutProgram[]>;
-  workoutProgram: WorkoutProgram[];
+  workoutPrograms: WorkoutProgram[];
   constructor(private workLogService: WorkLogService,
               private workoutProgramService: WorkoutProgramService) {}
 
@@ -26,9 +26,13 @@ export class WorkLogComponent implements OnInit {
       this.workoutProgram$ = this.workoutProgramService.getWorkoutProgramsByIds(data);
       this.workoutProgram$.subscribe(lort => {
         console.log("lort ",lort);
+        this.workoutPrograms = lort;
       });
       console.log("PROGRAM SDSAs",this.workoutProgram$);
     });
   }
 
+  getNameForWorkout(worklog: WorkLog) {
+    return this.workoutPrograms.indexOf(worklog.workoutProgramId).name;
+  }
 }

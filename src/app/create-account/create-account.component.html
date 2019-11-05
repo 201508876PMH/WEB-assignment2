@@ -13,13 +13,13 @@
         
         <div class="form-group">
             <label for="inputEmail">Email address</label>
-            <input formControlName="emailAddress" type="email" class="form-control" name="inputEmail" aria-describedby="emailHelp"
+            <input formControlName="emailAddress" autocomplete="off" type="email" class="form-control" name="inputEmail" aria-describedby="emailHelp"
                 placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone.</small>
         </div>
         <div class="form-group">
             <label for="inputPassword">Password</label>
-            <input formControlName="password" type="password" class="form-control" name="inputPassword" placeholder="Password">
+            <input formControlName="password" autocomplete="off" type="password" class="form-control" name="inputPassword" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary"  [disabled]="!registerForm.valid">Create account</button>
     </form>
