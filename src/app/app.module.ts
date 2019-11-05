@@ -30,6 +30,8 @@ import {ViewWorkoutProgramComponent} from './view-workout-program/view-workout-p
 import {AuthInterceptor} from './shared/auth.intercepter';
 import {WorkoutProgramsResolverService} from './workout-programs/workout-programs-resolver.service';
 import { AddExerciseComponent } from './add-exercise/add-exercise.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { WorkLogComponent } from './workLog/work-log.component';
 
 
 
@@ -46,7 +48,9 @@ import { AddExerciseComponent } from './add-exercise/add-exercise.component';
     CreateWorkoutProgramComponent,
     ViewWorkoutProgramComponent,
     WorkLogDialogComponent,
-    AddExerciseComponent
+    AddExerciseComponent,
+    WorkLogDialogComponent,
+    WorkLogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +68,11 @@ import { AddExerciseComponent } from './add-exercise/add-exercise.component';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule
   ],
   providers: [AuthGuard, WorkoutProgramsResolverService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  entryComponents: [WorkLogDialogComponent],
+  entryComponents: [WorkLogDialogComponent,WorkLogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

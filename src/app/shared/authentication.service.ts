@@ -69,7 +69,7 @@ export class AuthenticationService {
       return true;
     }, (err: HttpErrorResponse) => {
 
-      this.openSnackBar("Login failed, invalid username or password", "OK");
+      this.openSnackBar('Login failed, invalid username or password', 'OK');
       if (err.error instanceof Error) {
         console.log('an error occured:', err.error.message);
       } else {
@@ -82,14 +82,13 @@ export class AuthenticationService {
 
   public register(user: User) {
     const url = `${this.baseUrl}/createUser`;
-    this.httpClient.post(url, user).subscribe(data => {
+    this.httpClient.post(url, user).subscribe((data) => {
         // this.saveToken(data.token);
-
         this.router.navigate(['/']);
 
         return true;
       }, (err: HttpErrorResponse) => {
-
+        this.openSnackBar('User creation failed, Email already exist', 'OK');
         if (err.error instanceof Error) {
           console.log('an error occured:', err.error.message);
         } else {

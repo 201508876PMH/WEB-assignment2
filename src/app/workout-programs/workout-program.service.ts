@@ -17,11 +17,12 @@ export class WorkoutProgramService {
   addWorkLogUrl = this.baseUrl + 'users/addWorkLog';
 
   workoutPrograms: WorkoutProgram[];
+  private workoutProgramsByIdUrl: string = "https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/getWorkourProgramsById";
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
-  createWorkout(name: String): void {
+  createWorkout(name: String): any {
 
     this.httpClient.post(this.workoutProgramsUrl + 'createWorkoutProgram', name).subscribe((data) => {
 
@@ -45,5 +46,10 @@ export class WorkoutProgramService {
 
   public addWorkLog(workLog: WorkLog): void {
     this.httpClient.post<WorkLog>( this.addWorkLogUrl, workLog ).subscribe();
+  }
+
+  getWorkoutProgramsByIds(workoutProgramIds): Observable<WorkoutProgram[]> {
+
+    return this.httpClient.post<WorkoutProgram[]>(this.workoutProgramsByIdUrl, workoutProgramIds);
   }
 }

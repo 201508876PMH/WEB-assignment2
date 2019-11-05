@@ -24,9 +24,9 @@
   <p></p>
   <ul>
     <mat-list-item *ngFor="let workoutProgram of filteredWorkOutPrograms$ | async; let i = index">
-      <div class="wrapper" [ngClass]="{'grey ' : isEven(i)}">
-        <a mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
-        <button mat-raised-button (click)="openDialog(workoutProgram._id)">I did this</button>
+      <div fxLayout="row" fxLayout.lt-sm="column" class="wrapper" [ngClass]="{'grey ' : isEven(i)}">
+        <a fxFlex="85%"  mat-line [routerLink]="['/viewWorkoutProgram', workoutProgram._id]">{{workoutProgram.name}} </a>
+        <button fxFlex="15%" class="minWidth" *ngIf="authService.isLoggedIn()" mat-raised-button (click)="openDialog(workoutProgram._id)">I did this</button>
       </div>
       <mat-divider></mat-divider>
     </mat-list-item>
