@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WorkLogService} from './work-log.service';
 import {Observable} from 'rxjs';
 import {WorkLog} from '../models/workLog.model';
@@ -16,23 +16,31 @@ export class WorkLogComponent implements OnInit {
   worklogs: WorkLog[];
   workoutProgram$: Observable<WorkoutProgram[]>;
   workoutPrograms: WorkoutProgram[];
+
   constructor(private workLogService: WorkLogService,
-              private workoutProgramService: WorkoutProgramService) {}
+              private workoutProgramService: WorkoutProgramService) {
+  }
 
   ngOnInit() {
-    this.workLogService.getWorkLogs().subscribe((data) =>{
+    this.workLogService.getWorkLogs().subscribe((data) => {
       this.worklogs = data;
       console.log(data);
       this.workoutProgram$ = this.workoutProgramService.getWorkoutProgramsByIds(data);
       this.workoutProgram$.subscribe(lort => {
-        console.log("lort ",lort);
+        console.log('lort ', lort);
         this.workoutPrograms = lort;
       });
-      console.log("PROGRAM SDSAs",this.workoutProgram$);
+      console.log('PROGRAM SDSAs', this.workoutProgram$);
     });
   }
 
   getNameForWorkout(worklog: WorkLog) {
-    // return this.workoutPrograms.indexOf(worklog.workoutProgramId).name;
+    if (this.workoutPrograms) {
+      return this.workoutPrograms.find((workout) => workout._id == worklog.workoutProgramId).name;
+    }
+  }
+
+  isEven(n) {
+    return n % 2 == 0;
   }
 }

@@ -2,8 +2,9 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 div.mainContent {
     margin: auto;
-    width: 85%;
+    width: 50%;
     padding-top: 40px;
-    padding-bottom: 200px;
   }
-
+body{
+  background-color: beige !important;
+}

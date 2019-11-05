@@ -1,11 +1,18 @@
+<div class="mainContent">
+  <h2> Worklog</h2>
+  <mat-list>
+    <mat-list-item *ngFor="let worklog of worklogs; let i = index" [ngClass]="{'grey ' : isEven(i)}">
 
+        <div class="wrapper"  >
+          <a fxFlex="80%" fxLayoutAlign="space-between" mat-line
+             [routerLink]="['/viewWorkoutProgram', worklog.workoutProgramId]"> {{getNameForWorkout(worklog)}}</a>
 
+          <div fxFlex="20%">{{worklog.date | date}}</div>
 
-<mat-list>
-  <mat-list-item *ngFor="let worklog of worklogs">
-    <div>{{worklog.date | date}}</div>
-    <div> {{getNameForWorkout(worklog)}}</div>
-  </mat-list-item>
-</mat-list>
+        </div>
+      <mat-divider></mat-divider>
 
+    </mat-list-item>
 
+  </mat-list>
+</div>

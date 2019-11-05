@@ -21,13 +21,13 @@ export interface DialogData {
   templateUrl: './workout-programs.component.html',
   styleUrls: ['./workout-programs.component.css']
 })
-export class WorkoutProgramsComponent implements OnInit {
 
+export class WorkoutProgramsComponent implements OnInit {
   workoutPrograms: WorkoutProgram[];
   workoutPrograms$: Observable<WorkoutProgram[]>;
   filter: FormControl;
   filter$: Observable<string>;
-  filteredWorkOutPrograms$: Observable<WorkoutProgram[]>
+  filteredWorkOutPrograms$: Observable<WorkoutProgram[]>;
 
   constructor(private workoutProgramService: WorkoutProgramService,
               public dialog: MatDialog,
@@ -62,7 +62,6 @@ export class WorkoutProgramsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-
 }
 
 @Component({
@@ -75,13 +74,13 @@ export class WorkoutProgramsComponent implements OnInit {
 export class WorkLogDialogComponent {
   date: Date;
   maxDate: Date;
+
   constructor(
     public dialogRef: MatDialogRef<WorkLogDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private workoutProgramService: WorkoutProgramService,
     private AuthService: AuthenticationService) {
     this.maxDate = new Date();
-
   }
 
   onNoClick(): void {
@@ -93,5 +92,4 @@ export class WorkLogDialogComponent {
     this.workoutProgramService.addWorkLog(workLog);
     this.dialogRef.close();
   }
-
 }
