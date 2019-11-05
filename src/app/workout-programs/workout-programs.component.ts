@@ -4,14 +4,13 @@ import {WorkoutProgram} from '../models/workoutProgram.model';
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {WorkLog} from '../models/workLog.model';
-import {ViewWorkoutProgramService} from '../view-workout-program/view-workout-program.service';
 import {AuthenticationService} from '../shared/authentication.service';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl} from '@angular/forms';
-import {of} from 'rxjs/internal/observable/of';
 import {startWith} from 'rxjs/internal/operators/startWith';
 import {map} from 'rxjs/operators';
 import {combineLatest} from 'rxjs/internal/observable/combineLatest';
+import {MediaObserver} from '@angular/flex-layout';
 
 export interface DialogData {
   workoutProgramId: string;
@@ -33,7 +32,8 @@ export class WorkoutProgramsComponent implements OnInit {
   constructor(private workoutProgramService: WorkoutProgramService,
               public dialog: MatDialog,
               private route: ActivatedRoute,
-              private authService: AuthenticationService) {
+              private authService: AuthenticationService,
+              private media: MediaObserver) {
   }
 
   ngOnInit() {
@@ -46,7 +46,6 @@ export class WorkoutProgramsComponent implements OnInit {
           student.name.indexOf(filterString) !== -1))
       );
     }
-
     // MED RESOLVER
     this.workoutPrograms = this.route.snapshot.data['workoutProgramList'];
   }

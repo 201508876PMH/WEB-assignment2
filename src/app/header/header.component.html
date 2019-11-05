@@ -20,6 +20,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/workoutPrograms" routerLinkActive="active">Workout programs</a>
         </li>
+        <li class="nav-item">
+          <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/workLog" routerLinkActive="active">Work log</a>
+        </li>
       </ul>
 
       <ul class="nav justify-content-end">

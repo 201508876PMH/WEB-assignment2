@@ -1,12 +1,14 @@
 .wrapper {
-  display: flex;
-  justify-content: space-between;
   padding-top: 8px;
   padding-bottom: 8px;
-  align-items: center;
 }
 
+.minWidth{
+  min-width: 80px;
+}
 
+.maxWidth{
+}
 
 ul {
   padding-inline-start: 0px;
