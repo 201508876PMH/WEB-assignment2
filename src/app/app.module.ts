@@ -48,7 +48,7 @@ import { WorkLogComponent } from './workLog/work-log.component';
     CreateWorkoutProgramComponent,
     ViewWorkoutProgramComponent,
     WorkLogDialogComponent,
-    AddExerciseComponent
+    AddExerciseComponent,
     WorkLogDialogComponent,
     WorkLogComponent
   ],
