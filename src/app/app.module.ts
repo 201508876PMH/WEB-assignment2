@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CreateAccountComponent} from './create-account/create-account.component';
@@ -29,10 +28,9 @@ import {CreateWorkoutProgramComponent} from './create-workout-program/create-wor
 import {ViewWorkoutProgramComponent} from './view-workout-program/view-workout-program.component';
 import {AuthInterceptor} from './shared/auth.intercepter';
 import {WorkoutProgramsResolverService} from './workout-programs/workout-programs-resolver.service';
-import { AddExerciseComponent } from './add-exercise/add-exercise.component';
+import {AddExerciseComponent} from './add-exercise/add-exercise.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { WorkLogComponent } from './workLog/work-log.component';
-
+import {WorkLogComponent} from './workLog/work-log.component';
 
 
 @NgModule({
@@ -72,7 +70,8 @@ import { WorkLogComponent } from './workLog/work-log.component';
     FlexLayoutModule
   ],
   providers: [AuthGuard, WorkoutProgramsResolverService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  entryComponents: [WorkLogDialogComponent,WorkLogComponent],
+  entryComponents: [WorkLogDialogComponent, WorkLogComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

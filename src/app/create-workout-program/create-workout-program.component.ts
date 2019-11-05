@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {WorkoutProgramService} from '../workout-programs/workout-program.service';
-import {WorkoutProgram} from '../models/workoutProgram.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 

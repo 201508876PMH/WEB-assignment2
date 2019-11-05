@@ -9,16 +9,11 @@ import { Exercise } from '../models/exercise.model';
   providedIn: 'root'
 })
 export class ViewWorkoutProgramService {
-
-
   workoutProgramUrl = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/';
   getWorkoutProgramUrl = this.workoutProgramUrl + 'getWorkoutProgram/';
   getExercisesUrl = this.workoutProgramUrl + 'getExercises/';
 
- 
-
   constructor(private httpClient: HttpClient) {
-    //this.getWorkoutProgram();
   }
 
   public getWorkoutProgram(id: String): Observable<WorkoutProgram> {    

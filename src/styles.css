@@ -5,3 +5,6 @@ div.mainContent {
     width: 50%;
     padding-top: 40px;
   }
+body{
+  background-color: beige !important;
+}
