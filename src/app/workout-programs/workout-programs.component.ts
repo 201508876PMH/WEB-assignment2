@@ -32,7 +32,8 @@ export class WorkoutProgramsComponent implements OnInit {
 
   constructor(private workoutProgramService: WorkoutProgramService,
               public dialog: MatDialog,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private authService: AuthenticationService) {
   }
 
   ngOnInit() {

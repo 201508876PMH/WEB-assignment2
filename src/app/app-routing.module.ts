@@ -18,7 +18,7 @@ const routes: Routes = [
   //{path: 'workoutPrograms', component: WorkoutProgramsComponent, canActivate: [AuthGuard]},
   {path: 'workoutPrograms', component: WorkoutProgramsComponent, resolve: {workoutProgramList: WorkoutProgramsResolverService}},
   {path: 'createWorkoutProgram', component:CreateWorkoutProgramComponent,  canActivate: [AuthGuard]},
-  {path: 'viewWorkoutProgram/:id', component:ViewWorkoutProgramComponent,  canActivate: [AuthGuard]},
+  {path: 'viewWorkoutProgram/:id', component:ViewWorkoutProgramComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

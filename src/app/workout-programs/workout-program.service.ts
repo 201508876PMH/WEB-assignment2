@@ -20,10 +20,8 @@ export class WorkoutProgramService {
   constructor(private httpClient: HttpClient) {
   }
 
-  createWorkout(name: String): void {
-    this.httpClient.post(this.workoutProgramsUrl + 'createWorkoutProgram', name).subscribe((data) => {
-      console.log("DATA ",data);
-    });
+  createWorkout(name: String) {
+    return this.httpClient.post(this.workoutProgramsUrl + 'createWorkoutProgram', name);
   }
 
   public getWorkoutPrograms(): Observable<WorkoutProgram[]> {
