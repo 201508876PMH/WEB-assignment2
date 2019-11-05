@@ -33,6 +33,6 @@ export class WorkLogComponent implements OnInit {
   }
 
   getNameForWorkout(worklog: WorkLog) {
-    return this.workoutPrograms.indexOf(worklog.workoutProgramId).name;
+    // return this.workoutPrograms.indexOf(worklog.workoutProgramId).name;
   }
 }

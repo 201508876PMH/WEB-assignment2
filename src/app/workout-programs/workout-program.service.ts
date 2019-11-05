@@ -22,7 +22,7 @@ export class WorkoutProgramService {
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
-  createWorkout(name: String): void {
+  createWorkout(name: String): any {
 
     this.httpClient.post(this.workoutProgramsUrl + 'createWorkoutProgram', name).subscribe((data) => {
 
