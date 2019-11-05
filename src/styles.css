@@ -2,6 +2,8 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 div.mainContent {
     margin: auto;
-    width: 50%;
+    width: 85%;
     padding-top: 40px;
+    padding-bottom: 200px;
   }
+
