@@ -25,10 +25,6 @@ export class CreateWorkoutProgramComponent implements OnInit {
 
   createWorkout(value: any) {
 
-    this.workoutProgramService.createWorkout(value).subscribe((data) => {
-      if(data) {
-        this.router.navigate(['/workoutPrograms']);
-      }
-    });
+    this.workoutProgramService.createWorkout(value);
   }
 }
