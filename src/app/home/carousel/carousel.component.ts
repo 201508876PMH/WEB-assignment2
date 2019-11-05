@@ -10,9 +10,9 @@ export class CarouselComponent implements OnInit {
 
   constructor() { 
     
-    this.images[0] = "../../../assets/img/1.jpg";
-    this.images[1] = "../../../assets/img/2.jpg";
-    this.images[2] = "../../../assets/img/3.jpg";
+    this.images[0] = "../../../assets/img/F1.jpg";
+    this.images[1] = "../../../assets/img/F2.jpg";
+    this.images[2] = "../../../assets/img/F3.jpg";
   }
 
   ngOnInit() {
