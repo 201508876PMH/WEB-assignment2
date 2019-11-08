@@ -32,7 +32,7 @@ export class WorkoutProgramsComponent implements OnInit {
   constructor(private workoutProgramService: WorkoutProgramService,
               public dialog: MatDialog,
               private route: ActivatedRoute,
-              private authService: AuthenticationService,
+              public authService: AuthenticationService,
               private media: MediaObserver) {
   }
 
@@ -79,7 +79,7 @@ export class WorkLogDialogComponent {
     public dialogRef: MatDialogRef<WorkLogDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private workoutProgramService: WorkoutProgramService,
-    private AuthService: AuthenticationService) {
+    public AuthService: AuthenticationService) {
     this.maxDate = new Date();
   }
 

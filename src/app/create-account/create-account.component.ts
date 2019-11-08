@@ -14,7 +14,7 @@ export class CreateAccountComponent implements OnInit {
   private emailAddress: FormControl;
   private password: FormControl;
 
-  constructor(private authService: AuthenticationService, private formBuilder: FormBuilder) {
+  constructor(public authService: AuthenticationService, private formBuilder: FormBuilder) {
     this.firstName = new FormControl();
     this.lastName = new FormControl();
     this.emailAddress = new FormControl();

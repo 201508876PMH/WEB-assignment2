@@ -8,7 +8,7 @@ import {AuthenticationService} from '../shared/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(public authService: AuthenticationService) { }
 
   ngOnInit() {
   }
