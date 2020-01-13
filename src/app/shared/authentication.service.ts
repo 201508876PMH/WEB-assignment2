@@ -9,7 +9,8 @@ import {MatSnackBar} from '@angular/material';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/users';
+  //baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/users';
+  baseUrl = 'http://localhost:3000/api/users';
   redirectUrl: string;
 
 

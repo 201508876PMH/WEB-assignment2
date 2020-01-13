@@ -10,13 +10,16 @@ import {WorkLog} from '../models/workLog.model';
 })
 export class WorkoutProgramService {
 
-  baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/';
-  workoutProgramsUrl = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/';
+  //baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/';
+  baseUrl = 'http://localhost:3000/api/';
+  //workoutProgramsUrl = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/';
+  workoutProgramsUrl = 'http://localhost:3000/api/workoutPrograms/';
   addWorkoutUrl = 'createWorkoutProgram';
   addWorkLogUrl = this.baseUrl + 'users/addWorkLog';
 
   workoutPrograms: WorkoutProgram[];
-  private workoutProgramsByIdUrl: string = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/getWorkourProgramsById';
+  //private workoutProgramsByIdUrl: string = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/getWorkourProgramsById';
+  private workoutProgramsByIdUrl: string = 'http://localhost:3000/api/workoutPrograms/getWorkourProgramsById';
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }

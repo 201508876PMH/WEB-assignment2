@@ -9,7 +9,8 @@ import {Observable} from 'rxjs';
 })
 export class WorkLogService {
 
-  baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/';
+  //baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/';
+  baseUrl = 'http://localhost:3000/api/';
   worklogUrl: string = this.baseUrl + "workLog/getWorkLog";
 
   constructor(private httpClient: HttpClient) { }

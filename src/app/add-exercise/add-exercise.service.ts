@@ -8,7 +8,8 @@ import {Router} from '@angular/router';
 })
 export class AddExerciseService {
 
-  baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/';
+  //baseUrl = 'https://protected-eyrie-63584.herokuapp.com/api/';
+  baseUrl = 'http://localhost:3000/api/';
   addExerciseUrl = this.baseUrl + 'workoutPrograms/addExercise/';
 
   constructor(private httpClient: HttpClient, private router: Router) { 
