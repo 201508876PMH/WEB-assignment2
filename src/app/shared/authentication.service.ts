@@ -60,6 +60,7 @@ export class AuthenticationService {
     const url = `${this.baseUrl}/login`;
     this.httpClient.post(url, user).subscribe(data => {
       this.saveToken(data['token']);
+      
       console.log(this.redirectUrl);
       if (this.redirectUrl) {
         console.log(this.redirectUrl);

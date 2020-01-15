@@ -10,7 +10,7 @@ import { Exercise } from '../models/exercise.model';
 })
 export class ViewWorkoutProgramService {
   //workoutProgramUrl = 'https://protected-eyrie-63584.herokuapp.com/api/workoutPrograms/';
-  workoutProgramUrl = 'http://localhost:3000/api/workoutPrograms';
+  workoutProgramUrl = 'http://localhost:3000/api/workoutPrograms/';
   getWorkoutProgramUrl = this.workoutProgramUrl + 'getWorkoutProgram/';
   getExercisesUrl = this.workoutProgramUrl + 'getExercises/';
 
